@@ -16,9 +16,9 @@ if(!fs.existsSync(folderPath))
 
 let extnsList = {
     Audio: [".mp3", ".aac", ".wav", ".flac", ".ogg"],
-    Video: [".mp4", ".mov", ".avi", ".wmv", ".mkv"],
+    Videos: [".mp4", ".mov", ".avi", ".wmv", ".mkv"],
     Text: [".txt"],
-    Image: [".jpeg", ".jpg", ".png", ".heic", ".heif", ".img", ".webp", ".gif"],
+    Images: [".jpeg", ".jpg", ".png", ".heic", ".heif", ".img", ".webp", ".gif"],
     Documents: [".doc", ".pdf", ".xlsx", ".xls", ".docx"],
     Software: [".apk", ".exe"]
 };
@@ -40,7 +40,15 @@ for(let i=0 ; i<files.length ; i++) {
 
     let filePath = path.join(folderPath, files[i]);
     
-    console.log(filePath,"\n");
+
+
+    //moving part begins
+    let src = filePath;
+    let dest = path.join(myFolder,files[i]);
+    console.log("Src:",src);
+    console.log("Dest:",dest,"\n");
+    fs.copyFileSync(src, dest);
+    fs.unlinkSync(src);
 
 }
 
