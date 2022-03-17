@@ -1,10 +1,3 @@
-/*For people who hate the tiresome job of maintaining their files and folders in an organized fashion, I present a FILE ORGANIZER
-MADE IN NODE JS. (plus shit from the LPU kid's post)
-The rules are simple: copy the file "fileOrganiser.js" (link: <GitHub link>) to whichever folder you wanna organize, and then 
-run fileOrganizer.js. That's it.
-Shoutout to Mohd Aman sir
-*/
-
 let fs = require('fs');
 let path = require('path');
 
