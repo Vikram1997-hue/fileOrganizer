@@ -8,16 +8,13 @@ Shoutout to Mohd Aman sir
 let fs = require('fs');
 let path = require('path');
 
-let input = process.argv[2];
+let folderPath = process.argv[2];
 
-
-
-
-
-
-
-
-
+//error handling - check if provided path is valid
+if(fs.existsSync(folderPath))
+    console.log("Path is valid");
+else
+    console.log("Please enter a valid path!");
 
 
 
