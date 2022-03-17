@@ -11,10 +11,51 @@ let path = require('path');
 let folderPath = process.argv[2];
 
 //error handling - check if provided path is valid
-if(fs.existsSync(folderPath))
-    console.log("Path is valid");
-else
+if(!fs.existsSync(folderPath))
     console.log("Please enter a valid path!");
+
+let extnsList = {
+    Audio: [".mp3", ".aac", ".wav", ".flac", ".ogg"],
+    Video: [".mp4", ".mov", ".avi", ".wmv", ".mkv"],
+    Text: [".txt"],
+    Image: [".jpeg", ".jpg", ".png", ".heic", ".heif", ".img", ".webp", ".gif"],
+    Documents: [".doc", ".pdf", ".xlsx", ".xls", ".docx"],
+    Software: [".apk", ".exe"]
+};
+
+let files = fs.readdirSync(folderPath);
+
+for(let i=0 ; i<files.length ; i++) {
+
+    let ext = path.extname(files[i]);
+    let nameOfFolder = giveFolderName(ext);
+    console.log(files[i],"--->",nameOfFolder);
+}
+
+
+
+function giveFolderName(ext) { 
+
+    for(let key in extnsList) { //key becomes "Audio", then "Video", then "Text",... "Software"
+
+        let tempArr = extnsList[key];
+        for(let i=0 ; i<tempArr.length ; i++) {
+            
+            if(ext == tempArr[i])
+                return key;
+        }
+    }
+    return "Others";
+};
+
+
+
+
+
+
+
+
+
 
 
 
