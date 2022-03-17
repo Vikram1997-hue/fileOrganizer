@@ -23,6 +23,9 @@ let extnsList = {
     Software: [".apk", ".exe"]
 };
 
+
+
+
 let files = fs.readdirSync(folderPath);
 
 for(let i=0 ; i<files.length ; i++) {
@@ -30,6 +33,15 @@ for(let i=0 ; i<files.length ; i++) {
     let ext = path.extname(files[i]);
     let nameOfFolder = giveFolderName(ext);
     console.log(files[i],"--->",nameOfFolder);
+
+    let myFolder = path.join(folderPath, nameOfFolder);
+    if(!fs.existsSync(myFolder))
+        fs.mkdirSync(myFolder);
+
+    let filePath = path.join(folderPath, files[i]);
+    
+    console.log(filePath,"\n");
+
 }
 
 
